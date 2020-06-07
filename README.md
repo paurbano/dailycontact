@@ -8,7 +8,8 @@ Para trabajar con el
     $ git clone https://github.com/paurbano/dailycontact.git
     $ cd dailycontact
     $ sudo pip3 install -r requirements.txt
-    $ ./enviroment
+    $ ./environment
+    $ cat setup_mysql_dev.sql | mysql -uroot -hlocalhost -p
 
 ## correr el proyecto
 
