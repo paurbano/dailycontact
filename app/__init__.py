@@ -11,6 +11,15 @@ db = SQLAlchemy()
 # Init Login
 login_manager=LoginManager()
 
+# google ID's API Configuration
+# os.environ.get("GOOGLE_CLIENT_ID", None)
+GOOGLE_CLIENT_ID ="216501431691-c7g943n0e5ch39k86e4j4o19ci3nh7n9.apps.googleusercontent.com"
+# os.environ.get("GOOGLE_CLIENT_SECRET", None)
+GOOGLE_CLIENT_SECRET = "YI-L1DQOTixOBwv_XQR6yXNe"
+GOOGLE_DISCOVERY_URL = (
+        "https://accounts.google.com/.well-known/openid-configuration"
+    )
+
 
 def create_app():
     ''' Core application '''
@@ -32,13 +41,6 @@ def create_app():
     # others plugins i.e - remenber initialized first
     # bootstrap.init_app(app)
     # mail.init_app(app)
-    
-    # google ID's API Configuration
-    GOOGLE_CLIENT_ID ="" # os.environ.get("GOOGLE_CLIENT_ID", None)
-    GOOGLE_CLIENT_SECRET = "" # os.environ.get("GOOGLE_CLIENT_SECRET", None)
-    GOOGLE_DISCOVERY_URL = (
-        "https://accounts.google.com/.well-known/openid-configuration"
-    )
 
     with app.app_context():
         # models

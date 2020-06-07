@@ -1,6 +1,7 @@
 #!/user/bin/python3
 '''Class dailylog '''
 from app import db
+from datetime import datetime
 
 # Many to many relationships between userslogs and symptoms
 userlogsymptoms = db.Table('user_log_symptoms',
@@ -22,7 +23,7 @@ class Dailylog(db.Model):
     __tablename__ = "dailylogs"
     
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     symptoms = db.relationship('Symptom', secondary=userlogsymptoms, lazy='subquery',
             backref=db.backref('symptoms', lazy=True))
     routines = db.relationship('Routine', secondary=userlogroutines, lazy='subquery',
