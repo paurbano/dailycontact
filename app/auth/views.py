@@ -66,16 +66,18 @@ def login():
     '''
     # if user is logged in
     if current_user.is_authenticated:
+        # uncommet when is ready
         # return redirect(url_for('dailylog.routines'))
-        return "Usuario logeado Redireccionando a bitacora"
+        return render_template('dummy.html')
     
     login_form = LoginForm()
     if login_form.validate_on_submit():
-        # check if user exist and the password matches with storage in Database
+        # check if user exist and the password matches with the store it in Database
         user = User.query.filter_by(username=login_form.username.data).first()
         if user and user.check_password(password=login_form.password.data):
             login_user(user)
             # next_page = request.args.get('next')
+            
             # redirect to DailyLog log page
             # return redirect(url_for('dailylog.routines'))
             return render_template('dummy.html')
@@ -84,7 +86,7 @@ def login():
     return render_template('login.html', login_form=login_form, title='Login')
 
 @auth_bp.route('/logout')
-@login_required
+@login_required #this is for allow access to route only to loggin users
 def logout():
     '''
         Logout a user
