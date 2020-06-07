@@ -9,3 +9,6 @@ Para trabajar con el
     $ cd dailycontact
     $ sudo pip3 -r requirements.txt
     $ python3 run.py
+
+### Authors
+Aiblojac team
