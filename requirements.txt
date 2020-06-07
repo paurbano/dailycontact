@@ -1,7 +1,10 @@
-flask
-flask-login 
-flask-wtf
-flask-sqlalchemy 
-flask-bootstrap
+Flask
+Flask-login 
+Flask-wtf
+Flask-sqlalchemy 
+Flask-bootstrap
 email_validator
 mysql-server
+oauthlib
+pyOpenSSL
+requests

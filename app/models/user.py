@@ -3,6 +3,7 @@
 from app import db, login_manager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 
 
 # Many to many relationships between users and logs
@@ -22,7 +23,7 @@ class User(UserMixin, db.Model):
                          nullable=False)
     email = db.Column(db.String(64), index=True, nullable=False)
     password_hash = db.Column(db.String(128))
-    created_at = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     admin = db.Column(db.Boolean, nullable=False, default=0)
     logs = db.relationship('Dailylog', secondary=userlogs, lazy='subquery',
             backref=db.backref('users', lazy=True))
