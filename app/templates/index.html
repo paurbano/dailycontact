@@ -1,0 +1,12 @@
+<!-- index.html-->
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Welcome to Daily Contact!</h1>
+<div class="login-signup">
+    <span><a href="{{ url_for('auth_bp.signup') }}">Sign UP</a></span>
+    <span><a href="{{ url_for('auth_bp.login') }}">Log in.</a></span>
+  </div>
+
+{% endblock %}

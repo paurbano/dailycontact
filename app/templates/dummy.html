@@ -1,0 +1,11 @@
+<!-- index.html-->
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Now you´re logged in</h1>
+<div class="login-signup">
+    <span><a href="{{ url_for('auth_bp.logout') }}">Logout</a></span>
+</div>
+
+{% endblock %}
