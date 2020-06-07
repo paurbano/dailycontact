@@ -5,9 +5,13 @@ Para trabajar con el
 
 ## Instalación
 
-    $ git clone https://github.com/paurbano/dailycontact.init
+    $ git clone https://github.com/paurbano/dailycontact.git
     $ cd dailycontact
     $ sudo pip3 -r requirements.txt
+    $ ./enviroment
+
+## correr el proyecto
+
     $ python3 run.py
 
 ### Authors
