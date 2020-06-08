@@ -12,12 +12,6 @@ userlogs = db.Table('userlogs',
         db.Column('log_id', db.Integer, db.ForeignKey('dailylogs.id'), primary_key=True)
 )
 
-# many to many between users and companies
-usercompanies = db.Table('usercompanies',
-        db.Column('cmp_id', db.Integer, db.ForeignKey('companies.id'), primary_key=True),
-        db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-)
-
 class User(UserMixin, db.Model):
     ''' User entity '''
 
@@ -32,8 +26,6 @@ class User(UserMixin, db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     admin = db.Column(db.Boolean, nullable=False, default=0)
     logs = db.relationship('Dailylog', secondary=userlogs, lazy='subquery',
-            backref=db.backref('users', lazy=True))
-    companies = db.relationship('Companies', secondary=usercompanies, lazy='subquery',
             backref=db.backref('users', lazy=True))
 
     @property
