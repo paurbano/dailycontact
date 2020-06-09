@@ -5,7 +5,7 @@
 {% from "includes/_formhelpers.html" import render_field %}
 
 <div class="jumbotron">
-    <h1 class="text-center">Login Page</h1>
+    <h1 class="text-center">Daily Contact</h1>
 </div>
 
 <div class="container">
@@ -20,25 +20,22 @@
                     <form action="/login" method="POST">
                         <div class="form-group">
                             {{ login_form.hidden_tag() }}
-                            {{ render_field(login_form.username, class_="form-control") }}
+                            {{ render_field(login_form.username, class_="form-control", placeholder="Username") }}
                         </div>
                                                     
                         <div class="form-group">
-                            {{ render_field(login_form.password, class_="form-control") }}
+                            {{ render_field(login_form.password, class_="form-control", placeholder="password") }}
                         </div>
 
                         <p class="text-right">
-                            <input type="submit" class="btn btn-outline-secondary" value="Submit"/>
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit"/>
                         </p>
                         
                     </form>
+                    <p>o</p>
                     <form action="/oauth" method="POST">
-                        <p class="text-center">
-                            <input type="submit" class="btn btn-outline-secondary" value="Access with Google account"/>
-                        </p>
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Access with Google account</button>
                     </form>
-                        
-                    
                 </div>
             </div>
 

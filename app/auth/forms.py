@@ -28,7 +28,7 @@ class SignUpForm(FlaskForm):
     confirm = PasswordField('Confirm Your Password',
                             validators=[DataRequired(),
                                         EqualTo('password', message='Password do not match.')])
-    submit = SubmitField('Register')
+    submit = SubmitField('Sign Up')
 
 class LoginForm(FlaskForm):
     ''' user login form '''
