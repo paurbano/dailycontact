@@ -2,6 +2,9 @@
 '''Class dailylog '''
 from app import db
 from datetime import datetime
+from app.models.symptom import Symptom
+from app.models.routine import Routine
+from app.models.interact import Interact
 
 # Many to many relationships between userslogs and symptoms
 userlogsymptoms = db.Table('user_log_symptoms',
