@@ -17,6 +17,7 @@ class Company(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), index=True, nullable=False, default='')
     nit = db.Column(db.String(15), index=True, default='')
+    email_contact= db.Column(db.String(60), nullable=False, default='')
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     active = db.Column(db.Boolean, nullable=False, default=1)
     employees = db.relationship('User', secondary=usercompanies, lazy='subquery',

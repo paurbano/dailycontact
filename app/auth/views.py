@@ -32,11 +32,10 @@ def signup():
     # email = request.args.get("email")
     signup_form = SignUpForm()
     if signup_form.validate_on_submit():
-        user_exist = User.query.filter_by(username=signup_form.username.data).first()
-        user_exist = User.query.filter_by(email=signup_form.email.data).first()
+        user_name = User.query.filter_by(username=signup_form.username.data).first()
+        user_email = User.query.filter_by(email=signup_form.email.data).first()
         # print(user_exist)
-        if user_exist is not None:
-            #return make_response("usuario {} o correo {}  ya existe!".format(user_exist.username, user_exist.email))
+        if user_name or user_email:
             flash('A user already exists with that username or email')
         else:
             new_user = User(username=signup_form.username.data,
@@ -55,7 +54,7 @@ def signup():
             # return redirect(url_for('dailyLog.routines'))
             return render_template('dummy.html')
 
-    return render_template('signup.jinja2', form=signup_form,
+    return render_template('signup_2.html', form=signup_form,
                            title='Sign Up',
                            template='signup-page',
                            body="Sign up for a user account.")

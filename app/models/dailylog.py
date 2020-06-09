@@ -13,6 +13,12 @@ userlogsymptoms = db.Table('user_log_symptoms',
 )
 
 # Many to many relationships between userslogs and routines
+'''
+how to insert
+statement = userlogroutines.insert().values(log_id=log.id, routine_id=routine.id, frecuency=value)
+db.session.execute(statement)
+db.session.commit()
+'''
 userlogroutines = db.Table('user_log_routines',
         db.Column('log_id', db.Integer, db.ForeignKey('dailylogs.id'), primary_key=True),
         db.Column('routine_id', db.Integer, db.ForeignKey('routines.id'), primary_key=True),

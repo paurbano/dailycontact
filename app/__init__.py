@@ -4,12 +4,16 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_bootstrap import Bootstrap
 
 # db initialization
 db = SQLAlchemy()
 
 # Init Login
 login_manager=LoginManager()
+
+#init bootstrap
+bootstrap= Bootstrap()
 
 # google ID's API Configuration
 # os.environ.get("GOOGLE_CLIENT_ID", None)
@@ -39,7 +43,7 @@ def create_app():
     login_manager.init_app(app)
     login_manager.login_view = 'login'
     # others plugins i.e - remenber initialized first
-    # bootstrap.init_app(app)
+    bootstrap.init_app(app)
     # mail.init_app(app)
 
     with app.app_context():
@@ -49,10 +53,14 @@ def create_app():
         from app.models import symptom
         from app.models import dailylog
         from app.models import interact
+        from app.models import company
 
         # register BluePrints
         from app.auth import auth_bp
         app.register_blueprint(auth_bp, url_prefix='/')
+
+        from app.dailylog import dailylog
+        app.register_blueprint(auth_bp, url_prefix='/dailylog')
 
         # < -- here register other BluePrints -->
         #
