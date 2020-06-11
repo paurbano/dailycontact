@@ -67,7 +67,7 @@
                                     {% for log in userlogs.logs %}
                                         {% if log.id == id | int %}
                                             {% for rutina in log.routines %}
-                                                <br>{{ rutina.routine }}
+                                                <br>{{ rutina.routines.routine }} : {{ rutina.frecuency }}
                                             {% endfor %}
                                         {% endif %}
                                     {% endfor %}
