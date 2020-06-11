@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% from "includes/_formhelpers.html" import render_field %}
+
+<div class="jumbotron">
+    <h1 class="text-center">Historia Bitácoras </h1>
+    <div class="rigth">
+        <h2>User : {{username}}</h2>
+        <span><a href="{{ url_for('auth_bp.logout') }}">Logout</a></span>   
+    </div>
+</div>
+
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h3 style="text-align: center;">Bitácoras</h3>
+                        </div>
+                        <div class="col">
+                            <div class="right">
+                                <span><a href="{{ url_for('dailylog.newlog') }}">Nueva Bitácora</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th> Fecha </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ul in userlogs.logs | sort(attribute='created_at') %}
+                                    <tr>
+                                        <td>
+                                            <span><a href="/dailylog/logshistory/{{ ul.id }}">{{ ul.created_at.strftime('%Y-%m-%d') }}</a></span>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="col">
+                <div class="container">
+                    {% if id is none %}
+                    <div class="card-body" style="visibility: hidden;">
+                    {% else %}
+                        <div class="card-body" style="visibility: visible;">
+                    {% endif %}
+                        <div class="card-header bg-info">
+                            <h5>Protocolo de Auto-Cuidado</h5>
+                          </div>
+                        <div class="form-group">
+                                <label>
+                                  {% if userlogs.logs %}
+                                    {% for log in userlogs.logs %}
+                                        {% if log.id == id | int %}
+                                            {% for rutina in log.routines %}
+                                                <br>{{ rutina.routine }}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endfor %}
+                                  {% else %}
+                                    -
+                                  {% endif %}      
+                              </label>
+                        </div>
+                        <div class="card mt-3">
+                            <div class="card-header bg-info">
+                              <h5>Temperatura Corporal</h5>
+                            </div>
+                            <div class="card-body row">
+                                <div class="col">
+                                    <label for="tempin">Temperatura inicial</label>
+                                    {% if id is not defined %}
+                                    -
+                                    {% else %}
+                                        {% if userlogs.logs %}
+                                            {% for log in userlogs.logs %}
+                                                {% if log.id == id | int %}
+                                                    {{ log.temp_ini }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% else %}
+                                         -
+                                        {% endif %}
+                                    {% endif %}
+                                  </div>
+                                  <div class="col">
+                                    <label for="tempout">Temperatura al salir</label>
+                                    {% if id is not defined %}
+                                    -
+                                    {% else %}
+                                        {% if userlogs.logs %}
+                                            {% for log in userlogs.logs %}
+                                                {% if log.id == id | int %}
+                                                    {{ log.temp_end }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% else %}
+                                         -
+                                        {% endif %}
+                                    {% endif %}
+                                  </div>
+                            </div>
+                        </div>
+                        <!-- Transport -->
+                        <div class="card mt-3">
+                            <div class="card-header bg-info">
+                            <h5>Medio de transporte</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="transport">medio de transporte utilizado</label>
+                                    {% if id is not defined %}
+                                    -
+                                    {% else %}
+                                        {% if userlogs.logs %}
+                                            {% for log in userlogs.logs %}
+                                                {% if log.id == id | int %}
+                                                    {{ log.type_tx }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% else %}
+                                         -
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Transport -->
+                        <!-- Sintomas -->
+                        <div class="card mt-3">
+                            <div class="card-header bg-info">
+                              <h5>Sintomas Asociados</h5>
+                            </div>
+                            <div class="card-body">
+                                {% if userlogs.logs %}
+                                    {% for log in userlogs.logs %}
+                                        {% if log.id == id | int %}
+                                            {% for sintoma in log.symptoms %}
+                                                <br>{{ sintoma.symptom }}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endfor %}
+                                  {% else %}
+                                    -
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- End Sintomas -->
+                        <!-- Interactions -->
+                        <div class="card mt-3">
+                            <div class="card-header bg-info">
+                              <h5>Interacciones </h5>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                          <th> Nombre </th>
+                                          <th> Tipo </th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% if userlogs.logs %}
+                                            {% for log in userlogs.logs %}
+                                                {% if log.id == id | int %}
+                                                    {% for who in log.whointeracts %}
+                                                    <tr>
+                                                        <td>{{ who.name }}</td>
+                                                        <td>
+                                                            {% if who.tipe == 'P' %}
+                                                            Persona
+                                                            {% else %}
+                                                            Lugar
+                                                            {% endif%}
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                       </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End Interactions -->
+                    </div>    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
