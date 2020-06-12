@@ -32,7 +32,7 @@ def newlog():
     ''' Add user log '''
     # if user is logged in
     if current_user.is_authenticated:
-        return render_template('dummy.html')
+        return render_template('newlog.html', content=current_user)
 
 
 @login_manager.unauthorized_handler

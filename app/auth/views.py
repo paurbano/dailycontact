@@ -72,7 +72,7 @@ def login():
     if current_user.is_authenticated:
         # uncommet when is ready
         return redirect(url_for('dailylog.userlogshistory'))
-        #return render_template('dummy.html')
+        # return redirect('dailylog/loghistory.html')
     
     login_form = LoginForm()
     if login_form.validate_on_submit():

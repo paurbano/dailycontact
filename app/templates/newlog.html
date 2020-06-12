@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Daily Contact Form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="alert alert-info mt-4" role="alert">
+            <h4 class="alert-heading">Daily Contact</h4>
+            <p class="text-justify">
+                Como una medida de control y prevencion para la propagacion del <strong>COVID-19</strong>, el <strong>Ministerio de Salud</strong> ha definido en la <strong>Resolucion 0666 de 2020</strong> que todos las personas deben llevar a cabo un registro diario de su estado de salud, de las actividades de cuidado que ha realizado y de la interaccion con otras personas.
+            </p>
+            <hr>
+            <p class="mb-3">
+                Asi mismo, si usted o alguien de su nucleo familiar presenta sintomas relacionados con <strong>COVID-19</strong> te invitamos a comunicarte vía telefónica con las siguientes lineas de atencion.
+            </p>
+            <p>
+                <strong>Cali:</strong> 486 55 55 Opción 7 | <strong>Celular:</strong> 192 | <strong>Resto del país:</strong> 018000955590
+            </p>
+          </div>
+          <!-- Basic information -->
+          <div class="card">
+            <div class="card-header bg-info">
+              <h5>Datos Basicos</h5>
+            </div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="date" class="col-sm-2 col-form-label">Seleccione la fecha</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" id="date">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nombre" placeholder="{{current_user}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" placeholder="{{current_user}}" disabled>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- End Basic information -->
+          <!-- User autocuidado -->
+          <div class="card mt-3">
+            <div class="card-header bg-info">
+              <h5>Protocolo de Auto-Cuidado</h5>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="lmanos">¿Cuantas veces hoy realizaste el protocolo de lavado de manos?</label>
+                    <select class="form-control" name="lmanos" id="lmanos">
+                        <option value="Ninguna">Ninguna</option>
+                        <option value="1">1 vez</option>
+                        <option value="2">2 veces</option>
+                        <option value="3">3 veces</option>
+                        <option value="4">4 veces</option>
+                        <option value="5">5 veces</option>
+                        <option value="6">6 o mas veces</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="aguac">¿Cuantos vasos de agua consumiste hoy?</label>
+                    <select class="form-control" name="aguac" id="aguac">
+                        <option value="Ninguno">Ninguno</option>
+                        <option value="1">1 vaso</option>
+                        <option value="2">2 vasos</option>
+                        <option value="3">3 vasos</option>
+                        <option value="4">4 vasos</option>
+                        <option value="5">5 vasos</option>
+                        <option value="6">6 o mas vasos</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fisica">¿Cuantos tiempo de actividad fisica realizaste hoy?</label>
+                    <select class="form-control" name="fisica" id="fisica">
+                        <option value="No">No realice</option>
+                        <option value="1-30">1 - 30 Minutos</option>
+                        <option value="31-60">31 - 60 Minutos</option>
+                        <option value="61-90">61 - 90 Minutos</option>
+                        <option value="91">Mas de 90 Minutos</option>
+                    </select>
+                </div>
+            </div>
+          </div>
+          <!-- End autocuidado -->
+          <!-- Temperature record -->
+          <div class="card mt-3">
+            <div class="card-header bg-info">
+              <h5>Temperatura Corporal</h5>
+            </div>
+            <div class="card-body row">
+                <div class="col">
+                    <label for="tempin">Temperatura inicial</label>
+                    <input type="number" id="tempin" class="form-control" step="0.01" min="0" max="50" placeholder="30.1" required>
+                  </div>
+                  <div class="col">
+                    <label for="tempout">Temperatura al salir</label>
+                    <input type="number" id="tempout" class="form-control" step="0.01" min="0" max="50" placeholder="30.1" required>
+                  </div>
+            </div>
+          </div>
+          <!-- End Temperature record -->
+          <!-- Transport -->
+          <div class="card mt-3">
+            <div class="card-header bg-info">
+              <h5>Medio de transporte</h5>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="transport">¿Que medio de transporte utilizaste hoy?</label>
+                    <select class="form-control" name="transport" id="transport">
+                        <option value="Ninguno">Ninguno</option>
+                        <option value="publico">Publico</option>
+                        <option value="particular">Particular</option>
+                        <option value="bicicleta">Bicicleta</option>
+                        <option value="pie">A pie</option>
+                    </select>
+                </div>
+            </div>
+          </div>
+          <!-- End Transport -->
+          <!-- Sintomas -->
+          <div class="card mt-3">
+            <div class="card-header bg-info">
+              <h5>Sintomas Asociados</h5>
+            </div>
+            <div class="card-body">
+                <p>¿Has presentado alguno de estos síntomas?</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="tos" id="tos">
+                    <label class="form-check-label" for="tos">
+                      <strong>Tos </strong>(constante)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="fiebre" id="fiebre">
+                    <label class="form-check-label" for="fiebre">
+                      <strong>Fiebre </strong>(mayor o igual a 38 °C)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="respirar" id="respirar">
+                    <label class="form-check-label" for="respirar">
+                      <strong>Dificultad para respirar</strong>
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="dolorg" id="dolorg">
+                    <label class="form-check-label" for="dolorg">
+                      <strong>Dolor de Garganta</strong>
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="dolorc" id="dolorc">
+                    <label class="form-check-label" for="dolorc">
+                      <strong>Dolor de cabeza </strong>(constante)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="cnasal" id="cnasal">
+                    <label class="form-check-label" for="cnasal">
+                      <strong>Congestion Nasal</strong>
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="malestar" id="malestar">
+                    <label class="form-check-label" for="malestar">
+                      <strong>Malestar General</strong>
+                    </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="ninguno" id="ninguno">
+                  <label class="form-check-label" for="ninguno">
+                    <strong>Ninguno</strong>
+                  </label>
+              </div>
+            </div>
+          </div>
+          <!-- End sintomas -->
+          <!-- interaccion -->
+          <div class="card mt-3">
+            <div class="card-header bg-info">
+              <h5>Interaccion con personas</h5>
+            </div>
+            <div class="card-body">
+              <p>Ingresa el nombre de aquellas personas con quien interactuaste por mas de 15 minutos y a una distancia menor a 2 metros.</p>
+              <div class="container form-group" id="persons">
+                  <div class="row col-sm-10">
+                      <input type="text" class="form-control" name="person[]" placeholder="Ingrese el nombre" required>
+                  </div>
+              </div>
+              <button type="button" class="btn btn-success" id="add_person">Add Persona</button>
+            </div>
+          </div>
+          <!-- End interaccion -->
+          <!-- Lugares visitados -->
+          <div class="card mt-3">
+            <div class="card-header bg-info">
+              <h5>Lugares visitados</h5>
+            </div>
+            <div class="card-body">
+              <p>Ingresa el nombre de lugares que visitaste y tuviste permanencia de mas de 15 minutos.</p>
+              <div class="container form-group" id="lugares">
+                  <div class="row col-sm-10">
+                      <input type="text" class="form-control" name="lugares[]" placeholder="Ingrese el lugar visitado" required>
+                  </div>
+              </div>
+              <button type="button" class="btn btn-success" id="add_lugar">Add Lugar</button>
+            </div>
+          </div>
+          <!-- End lugares visitados -->
+          <!-- Envio formulario -->
+          <div class="alert alert-info mt-3" role="alert">
+            <h4 class="alert-heading">Completado!</h4>
+            <p>Certifico que toda la información dada en esta aplicación es verdadera y correcta de acuerdo a mi mejor conocimiento y creencia.</p>
+            <hr>
+            <button type="button" class="btn btn-primary" id="enviar">Enviar</button>
+          </div>
+          <!-- End envio formulario -->
+    </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="{{ url_for("static", filename="dist/js/app.js") }}"></script>
+</body>
+</html>

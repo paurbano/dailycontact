@@ -34,7 +34,7 @@ def create_app():
     # app.config.from_pyfile('config.py')
 
     # this must be move to config.py
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://covid_dev:covid19_dev@localhost:3306/daily_dev_db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://covid_dev:covid19_dev@localhost:3306/daily_dev_db'
     app.config['SECRET_KEY'] = '!wdcvfer3$4rfvbgt%5'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -60,7 +60,7 @@ def create_app():
         app.register_blueprint(auth_bp, url_prefix='/')
 
         from app.dailylog import dailylog
-        app.register_blueprint(auth_bp, url_prefix='/dailylog')
+        app.register_blueprint(dailylog, url_prefix='/dailylog')
 
         # < -- here register other BluePrints -->
         #
