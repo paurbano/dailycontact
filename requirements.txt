@@ -1,7 +1,7 @@
 Flask
 Flask-login 
 Flask-wtf
-Flask-sqlalchemy 
+Flask-sqlalchemy
 Flask-bootstrap
 email_validator
 mysql-server
