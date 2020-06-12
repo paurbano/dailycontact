@@ -51,8 +51,8 @@ def signup():
             except Exception as err:
                 flash(err)
             # redirect to daily-Log, uncomment when is ready!
-            # return redirect(url_for('dailyLog.routines'))
-            return render_template('dummy.html')
+            return redirect(url_for('dailylog.userlogshistory'))
+            # return render_template('dummy.html')
 
     return render_template('signup_2.html', form=signup_form,
                            title='Sign Up',
@@ -71,8 +71,8 @@ def login():
     # if user is logged in
     if current_user.is_authenticated:
         # uncommet when is ready
-        # return redirect(url_for('dailylog.routines'))
-        return render_template('dummy.html')
+        return redirect(url_for('dailylog.userlogshistory'))
+        #return render_template('dummy.html')
     
     login_form = LoginForm()
     if login_form.validate_on_submit():
@@ -83,8 +83,8 @@ def login():
             # next_page = request.args.get('next')
             
             # redirect to DailyLog log page
-            # return redirect(url_for('dailylog.routines'))
-            return render_template('dummy.html')
+            return redirect(url_for('dailylog.userlogshistory'))
+            #return render_template('dummy.html')
         else:
             flash('Invalid Username or Password')
     return render_template('login.html', login_form=login_form, title='Login')
@@ -167,12 +167,12 @@ def callback():
         db.session.commit() # create new user
 
     # Begin user session by logging the user in
-    login_user(new_user)
+    login_user(User.query.filter_by(oauth_id=unique_id).first())
 
     # Send user to DailyLog
     # redirect to DailyLog log page
-    # return redirect(url_for('dailylog.routines'))
-    return render_template('dummy.html')
+    return redirect(url_for('dailylog.userlogshistory'))
+    #return render_template('dummy.html')
 
 @auth_bp.route('/logout')
 @login_required #this is for allow access to route only to loggin users
