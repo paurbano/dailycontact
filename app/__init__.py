@@ -59,8 +59,12 @@ def create_app():
         from app.auth import auth_bp
         app.register_blueprint(auth_bp, url_prefix='/')
 
+        from app.admin import admin_bp
+        app.register_blueprint(admin_bp, url_prefix ='/admin')
+        
         from app.dailylog import dailylog
-        app.register_blueprint(auth_bp, url_prefix='/dailylog')
+        app.register_blueprint(dailylog, url_prefix='/dailylog')
+
 
         # < -- here register other BluePrints -->
         #

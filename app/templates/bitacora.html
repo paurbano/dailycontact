@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% from "includes/_formhelpers.html" import render_field %}
+
+<div class="jumbotron">
+    <h1 class="text-center">Daily Contact - Historia Bitácoras </h1>
+    <div class="rigth">
+        <h2>User : {{username}}</h2>
+        <span><a href="{{ url_for('auth_bp.logout') }}">Logout</a></span>   
+    </div>
+</div>
+
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="container">
+                    <h2 style="text-align: center;">Bitácoras</h2>
+                    <div class="left">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th> Fecha </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ul in userlogs.logs | sort(attribute='created_at') %}
+                                    <tr>
+                                        <td>
+                                            <span><a href="{{ url_for('/loghistory/id') }}">{{ ul.created_at }}</a></span>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="container">
+                    <div class="card-header bg-info">
+                        <h5>Protocolo de Auto-Cuidado</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                              <label for="lmanos">veces que realizaste el protocolo de lavado de manos</label>
+                              <label>
+                                  {% if userlog %}
+                                    {{ userlogs.logs[0].routines}}
+                                  {% endif %}      
+                              </label>
+                        </div>
+                    </div>    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
