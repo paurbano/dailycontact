@@ -13,7 +13,7 @@ from app.admin.forms import *
 
 @admin_bp.route('/')
 @login_required
-def index():
+def dashboard():
     '''
         Index admin
     '''
@@ -32,8 +32,7 @@ def addroutine():
         add_form = RoutineForm()
 
         if add_form.validate_on_submit():
-            new_routine = Routine(routine=add_form.routine.data,
-                                  active=add_form.active.data)
+            new_routine = Routine(routine=add_form.routine.data)
             try:
                 db.session.add(new_routine)
                 db.session.commit()
@@ -41,18 +40,118 @@ def addroutine():
             except Exception as e:
                 flash('An error occur saving Routine: {}'.format(e))
             
-            return redirect(url_for('admin.list_routines'))
+            return redirect(url_for('admin_bp.list_routines'))
 
         return render_template('/routine.html', form=add_form, add_routine=False)
 
     return redirect(url_for('auth_bp.login'))
 
-@admin_bp.route('/routines', strict_slashes=True)
+@admin_bp.route('/routines/<id>', strict_slashes=True)
+@login_required
+def updateroutine(id=None):
+    ''' 
+        Update a routine
+    '''
+    if current_user.admin:
+        form = RoutineForm()
+        routines = Routine.query.all()
+        if id is not None:
+            for routine in routines:
+                if routine.id == int(id):
+                    _routine = routine
+            
+            if _routine.active is True:
+                _routine.active = 0
+            else:
+                _routine.active = 1
+
+            try:
+                db.session.add(_routine)
+                db.session.commit()
+            except:
+                flash('Error actualizando Rutina')
+        return render_template('routine.html', form=form, routines=routines)
+    return redirect(url_for('auth_bp.login'))
+
+
+@admin_bp.route('/routines', strict_slashes=True, methods=['GET', 'POST'])
 @login_required
 def list_routines():
     ''' 
         list all routines
     '''
-    routines = Routine.query.all()
-    add_form = RoutineForm()
-    return render_template('routine.html',  form=add_form, routines=routines, add_routine=False)
+    if current_user.admin:
+        routines = Routine.query.all()
+        form = RoutineForm()
+        return render_template('routine.html',  form=form, routines=routines, add_routine=False)
+    return redirect(url_for('auth_bp.login'))
+
+@admin_bp.route('/symptoms/add', strict_slashes=True, methods=['GET', 'POST'])
+@login_required
+def addsymptom():
+    '''
+     add symptom
+    '''
+    if current_user.admin:
+        add_form = SymptomForm()
+
+        if add_form.validate_on_submit():
+            new_symptom = Symptom(symptom=add_form.symptom.data,
+                                  active=add_form.active.data)
+            try:
+                db.session.add(new_symptom)
+                db.session.commit()
+                flash('Symptom added successfully!!')
+            except Exception as e:
+                flash('An error occur saving Symptom: {}'.format(e))
+            
+            return redirect(url_for('admin_bp.list_symptoms'))
+
+        return render_template('/symptom.html', form=add_form, add_symptom=False)
+
+    return redirect(url_for('auth_bp.login'))
+
+@admin_bp.route('/symptoms', strict_slashes=True, methods=['GET', 'POST'])
+@login_required
+def list_symptoms():
+    ''' 
+        list all symptoms
+    '''
+    if current_user.admin:
+        symptoms = Symptom.query.all()
+        form = SymptomForm()
+        return render_template('symptom.html', form=form, symptoms=symptoms)
+    return redirect(url_for('auth_bp.login'))
+
+@admin_bp.route('/symptoms/<id>', strict_slashes=True)
+@login_required
+def updatesymptom(id=None):
+    ''' 
+        Update a symptom
+    '''
+    if current_user.admin:
+        form = SymptomForm()
+        symptoms = Symptom.query.all()
+        if id is not None:
+            for sintoma in symptoms:
+                if sintoma.id == int(id):
+                    symptom = sintoma
+            
+            if symptom.active is True:
+                symptom.active = 0
+            else:
+                symptom.active = 1
+
+            try:
+                db.session.add(symptom)
+                db.session.commit()
+            except:
+                flash('Error actualizando Sintoma')
+        return render_template('symptom.html', form=form, symptoms=symptoms)
+    return redirect(url_for('auth_bp.login'))
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    ''' redirect unauthorized users to login '''
+    flash('You must be logged in to view this page')
+    return redirect(url_for('auth_bp.login'))

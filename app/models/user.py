@@ -17,11 +17,11 @@ class User(UserMixin, db.Model):
     ''' User entity '''
 
     __tablename__ = "users"
+    __table_args__ = (db.UniqueConstraint('username', 'email', name='unique_user'),)
 
     id = db.Column(db.Integer, primary_key=True)
     oauth_id = db.Column(db.String(256), index=True, default='')
-    username = db.Column(db.String(64), index=True, unique=True,
-                         nullable=False)
+    username = db.Column(db.String(64), index=True, nullable=False)
     email = db.Column(db.String(64), index=True, nullable=False)
     be_visible = db.Column(db.Boolean, nullable=False, default=1)
     password_hash = db.Column(db.String(128))
