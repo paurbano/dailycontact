@@ -1,11 +1,7 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% extends "base.html" %}
 {% block title %}
-    {% if add_routine %}
-        Adicionar Rutina
-    {% else %}
-        Editar Rutina
-    {% endif %}
+    
 {% endblock %}
 {% block content %}
 {% from "includes/_formhelpers.html" import render_field %}
@@ -42,16 +38,16 @@
           <!-- 
           {{ wtf.quick_form(form) }}
           -->
-          <form action="{{url_for('admin_bp.addroutine')}}" method="POST">
+          <form action="{{url_for('admin_bp.addsymptom')}}" method="POST">
             <div class="form-group">
                 {{ form.hidden_tag() }}
-                {{ render_field(form.routine, class_="form-control", placeholder="Rutina") }}
+                {{ render_field(form.symptom, class_="form-control", placeholder="Sintoma") }}
             </div>
-                                        
+            <!--
             <div class="form-group">
                 {{ render_field(form.active, class_="form-control") }}
             </div>
-
+			-->
             <p class="text-right">
                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Guardar"/>
             </p>
@@ -64,7 +60,7 @@
 									#
 								</th>
 								<th>
-									Rutina
+									Sintoma
 								</th>
 								<th>
 									Activo
@@ -75,26 +71,30 @@
 							</tr>
 						</thead>
 						<tbody>
-							{% if routines %}
-                {% for rutina in routines %}
-                  <tr>
-                    <td>
-                      {{ rutina.id }}
-                    </td>
-                    <td>
-                      {{ rutina.routine }}
-                    </td>
-                    <td>
-                      <label>
-                        <input type="checkbox" value="{{ rutina.active }}"/>
-                      </label>
-                    </td>
-                    <td>
-                      edit
-                    </td>
-                  </tr>
-                {% endfor%}
-              {% endif %}
+							{% if symptoms %}
+								{% for sintoma in symptoms %}
+								<tr>
+									<td>
+									{{ sintoma.id }}
+									</td>
+									<td>
+									{{ sintoma.symptom }}
+									</td>
+									<td>
+									<label>
+										<input type="checkbox" id={{sintoma.id}} {% if sintoma.active %} checked {% endif %} />
+									</label>
+									</td>
+									<td>
+										<div class="btn-group-toggle">
+											<label class="btn btn-sm btn-info active">
+												<a href="/admin/symptoms/{{sintoma.id}}">Guardar</a>
+											</label>
+										</div>
+									</td>
+								</tr>
+								{% endfor%}
+              				{% endif %}
 						</tbody>
 					</table>
 				</div>

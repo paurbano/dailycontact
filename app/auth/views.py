@@ -70,8 +70,10 @@ def login():
     '''
     # if user is logged in
     if current_user.is_authenticated:
-        # uncommet when is ready
-        return redirect(url_for('dailylog.userlogshistory'))
+        if current_user.admin:
+            return redirect(url_for('admin_bp.dashboard'))
+        else:
+            return redirect(url_for('dailylog.userlogshistory'))
         #return render_template('dummy.html')
     
     login_form = LoginForm()
@@ -81,10 +83,12 @@ def login():
         if user and user.check_password(password=login_form.password.data):
             login_user(user)
             # next_page = request.args.get('next')
-            
-            # redirect to DailyLog log page
-            return redirect(url_for('dailylog.userlogshistory'))
-            #return render_template('dummy.html')
+            if current_user.admin:
+                return redirect(url_for('admin_bp.dashboard'))
+            else:
+                # redirect to DailyLog log page
+                return redirect(url_for('dailylog.userlogshistory'))
+                #return render_template('dummy.html')
         else:
             flash('Invalid Username or Password')
     return render_template('login.html', login_form=login_form, title='Login')
@@ -162,7 +166,9 @@ def callback():
     )
 
     # Doesn't exist? Add to database
-    if not User.query.filter_by(oauth_id=unique_id).first():
+    if not User.query.filter_by(oauth_id=unique_id).first() or\
+        (User.query.filter_by(username=users_name).first() and\
+        User.query.filter_by(email=users_email).first()):
         db.session.add(new_user)
         db.session.commit() # create new user
 

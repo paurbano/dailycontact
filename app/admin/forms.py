@@ -8,13 +8,13 @@ class RoutineForm(FlaskForm):
         Add Routine Form
     '''
     routine = StringField('Rutina', validators=[DataRequired()])
-    active = BooleanField('Activo')
+    active = BooleanField('')
     submit = SubmitField('Guardar')
 
 class SymptomForm(FlaskForm):
     '''
     Add Symptom form
     '''
-    routine = StringField('Rutina', validators=[DataRequired()])
-    active = BooleanField('Activo')
+    symptom = StringField('Sintoma', validators=[DataRequired()])
+    active = BooleanField('')
     submit = SubmitField('Guardar')
