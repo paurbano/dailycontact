@@ -1,13 +1,12 @@
 # config enviroment for app
 from os import environ, path
-from dotenv import load_dotenv
 
 basedir = path.abspath(path.dirname(__file__))
-load_dotenv(path.join(basedir, '.env'))
+#load_dotenv(path.join(basedir, '.env'))
 
 class Config:
     ''' set configuration enviroment variables '''
-    DEBUG = False
+    DEBUG = True
 
     # general
     FLASK_APP = 'run.py'
