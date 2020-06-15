@@ -30,11 +30,8 @@ def create_app():
     app.config.from_object(Config)
 
     # this must be move to config.py
-    '''
-    app.config['SQLALCHEMY_DATABASE_URI'] = 
-    app.config['SECRET_KEY'] = 
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] =
-    '''
+    app.config['SECRET_KEY'] = '!wdcvfer3$4rfvbgt%5'
+    
     # Initialize plugins - database and Login
     db.init_app(app)
     login_manager.init_app(app)
