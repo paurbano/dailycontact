@@ -21,6 +21,7 @@
                 <strong>Cali:</strong> 486 55 55 Opción 7 | <strong>Celular:</strong> 192 | <strong>Resto del país:</strong> 018000955590
             </p>
           </div>
+        <form method="POST" action="/">
           <!-- Basic information -->
           <div class="card">
             <div class="card-header bg-info">
@@ -30,19 +31,19 @@
                 <div class="form-group row">
                     <label for="date" class="col-sm-2 col-form-label">Seleccione la fecha</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" id="date">
+                        <input type="date" class="form-control" id="date" name="date" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nombre" placeholder="{{current_user}}" disabled>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="email" placeholder="{{current_user}}" disabled>
+                        <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                 </div>
             </div>
@@ -56,7 +57,8 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="lmanos">¿Cuantas veces hoy realizaste el protocolo de lavado de manos?</label>
-                    <select class="form-control" name="lmanos" id="lmanos">
+                    <select class="form-control" name="lmanos" id="lmanos" required>
+                        <option value=""></option>
                         <option value="Ninguna">Ninguna</option>
                         <option value="1">1 vez</option>
                         <option value="2">2 veces</option>
@@ -68,7 +70,8 @@
                 </div>
                 <div class="form-group">
                     <label for="aguac">¿Cuantos vasos de agua consumiste hoy?</label>
-                    <select class="form-control" name="aguac" id="aguac">
+                    <select class="form-control" name="aguac" id="aguac" required>
+                        <option value=""></option>
                         <option value="Ninguno">Ninguno</option>
                         <option value="1">1 vaso</option>
                         <option value="2">2 vasos</option>
@@ -80,7 +83,8 @@
                 </div>
                 <div class="form-group">
                     <label for="fisica">¿Cuantos tiempo de actividad fisica realizaste hoy?</label>
-                    <select class="form-control" name="fisica" id="fisica">
+                    <select class="form-control" name="fisica" id="fisica" required>
+                        <option value=""></option>
                         <option value="No">No realice</option>
                         <option value="1-30">1 - 30 Minutos</option>
                         <option value="31-60">31 - 60 Minutos</option>
@@ -99,11 +103,11 @@
             <div class="card-body row">
                 <div class="col">
                     <label for="tempin">Temperatura inicial</label>
-                    <input type="number" id="tempin" class="form-control" step="0.01" min="0" max="50" placeholder="30.1" required>
+                    <input type="number" id="tempin" name="tempin" class="form-control" step="0.01" min="0" max="50" placeholder="30.1" required>
                   </div>
                   <div class="col">
                     <label for="tempout">Temperatura al salir</label>
-                    <input type="number" id="tempout" class="form-control" step="0.01" min="0" max="50" placeholder="30.1" required>
+                    <input type="number" id="tempout" name="tempout" class="form-control" step="0.01" min="0" max="50" placeholder="30.1" required>
                   </div>
             </div>
           </div>
@@ -116,7 +120,8 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="transport">¿Que medio de transporte utilizaste hoy?</label>
-                    <select class="form-control" name="transport" id="transport">
+                    <select class="form-control" name="transport" id="transport" required>
+                        <option value=""></option>
                         <option value="Ninguno">Ninguno</option>
                         <option value="publico">Publico</option>
                         <option value="particular">Particular</option>
@@ -135,50 +140,50 @@
             <div class="card-body">
                 <p>¿Has presentado alguno de estos síntomas?</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="tos" id="tos">
+                    <input class="form-check-input sintomas" type="checkbox" name="sintomas" value="tos">
                     <label class="form-check-label" for="tos">
                       <strong>Tos </strong>(constante)
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="fiebre" id="fiebre">
+                    <input class="form-check-input sintomas" type="checkbox" name="sintomas" value="fiebre">
                     <label class="form-check-label" for="fiebre">
                       <strong>Fiebre </strong>(mayor o igual a 38 °C)
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="respirar" id="respirar">
+                    <input class="form-check-input sintomas" type="checkbox" name="sintomas" value="respirar">
                     <label class="form-check-label" for="respirar">
                       <strong>Dificultad para respirar</strong>
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="dolorg" id="dolorg">
+                    <input class="form-check-input sintomas" type="checkbox" name="sintomas" value="dolorg">
                     <label class="form-check-label" for="dolorg">
                       <strong>Dolor de Garganta</strong>
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="dolorc" id="dolorc">
+                    <input class="form-check-input sintomas" type="checkbox" name="sintomas" value="dolorc">
                     <label class="form-check-label" for="dolorc">
                       <strong>Dolor de cabeza </strong>(constante)
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="cnasal" id="cnasal">
+                    <input class="form-check-input sintomas" type="checkbox" name="sintomas" value="cnasal"">
                     <label class="form-check-label" for="cnasal">
                       <strong>Congestion Nasal</strong>
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="malestar" id="malestar">
+                    <input class="form-check-input sintomas" type="checkbox" name="sintomas" value="malestar">
                     <label class="form-check-label" for="malestar">
                       <strong>Malestar General</strong>
                     </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="ninguno" id="ninguno">
-                  <label class="form-check-label" for="ninguno">
+                  <input class="form-check-input" type="checkbox" id="nosintomas" name="nosintomas" value="ninguno">
+                  <label class="form-check-label" for="nosintomas">
                     <strong>Ninguno</strong>
                   </label>
               </div>
@@ -222,11 +227,23 @@
             <h4 class="alert-heading">Completado!</h4>
             <p>Certifico que toda la información dada en esta aplicación es verdadera y correcta de acuerdo a mi mejor conocimiento y creencia.</p>
             <hr>
-            <button type="button" class="btn btn-primary" id="enviar">Enviar</button>
+            <input type="submit" class="btn btn-primary" name="Enviar">
           </div>
           <!-- End envio formulario -->
+        </form>      
     </div>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="{{ url_for("static", filename="dist/js/app.js") }}"></script>
+  <script>
+    $(document).ready(function () {
+      $('#nosintomas').on('click', function () {
+        if ($(this).prop("checked") == true) {
+          $("input.sintomas").attr("disabled", true);
+        } else {
+            $("input.sintomas").removeAttr("disabled");
+        }
+      });
+    });
+  </script>
 </body>
 </html>

@@ -26,7 +26,7 @@ def userlogshistory(id=None):
                                username=current_user.username)
 
 
-@dailylog.route('/addlog', strict_slashes=True)
+@dailylog.route('/addlog', strict_slashes=True, methods=['GET', 'POST'])
 @login_required
 def newlog():
     ''' Add user log '''
