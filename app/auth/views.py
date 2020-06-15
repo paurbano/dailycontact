@@ -166,9 +166,10 @@ def callback():
     )
 
     # Doesn't exist? Add to database
-    if not User.query.filter_by(oauth_id=unique_id).first() or\
-        (User.query.filter_by(username=users_name).first() and\
+    if not User.query.filter_by(oauth_id=unique_id).first() or \
+        not (User.query.filter_by(username=users_name).first() and\
         User.query.filter_by(email=users_email).first()):
+
         db.session.add(new_user)
         db.session.commit() # create new user
 

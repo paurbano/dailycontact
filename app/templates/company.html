@@ -1,0 +1,123 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %}
+    
+{% endblock %}
+{% block content %}
+{% from "includes/_formhelpers.html" import render_field %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="u_fNK">
+			</div>
+			<div class="u_fNK">
+				<div>
+					<div>
+						<div>
+							<div>
+								<div class="_2okjE _1-uTj">
+									<span class="_3r4Mt"></span>
+								</div>
+							</div>
+							<div>
+								<div class="_5WizN _1QzSN">
+									<div class="_3YmQx">
+										<div class="">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4">
+          {{ wtf.quick_form(form, action=url_for('admin_bp.addcompany'), method="post") }}
+		  <!--
+          <form action="{{url_for('admin_bp.addcompany')}}" method="POST">
+            <div class="form-group">
+                {{ form.hidden_tag() }}
+                {{ render_field(form.name, class_="form-control", placeholder="Nombre") }}
+            </div>
+                                        
+            <div class="form-group">
+				{{ render_field(form.nit, class_="form-control", placeholder="Nit") }}
+            </div>
+
+			<div class="form-group">
+                {{ render_field(form.email_contact, class_="form-control", placeholder="contacto@empresa.com") }}
+			</div>
+			
+            <p class="text-right">
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Guardar"/>
+            </p>
+		  </form>
+		  -->
+          <br>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>
+									#
+								</th>
+								<th>
+									Empresa
+								</th>
+								<th>
+									Nit
+								</th>
+								<th>
+									Email contacto
+								</th>
+								<th>
+									Active
+								</th>
+								<th>
+									Edit
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% if companies %}
+								{% for company in companies %}
+								<tr>
+									<td>
+										{{ company.id }}
+									</td>
+									<td>
+										{{ company.name }}
+									</td>
+									<td>
+										{{ company.nit }}
+									</td>
+									<td>
+										{{ company.email_contact }}
+									</td>
+									<td>
+										<label>
+											<input type="checkbox" id={{company.id}} {% if company.active %} checked {% endif %} />
+										</label>
+									</td>
+									<td>
+										<div class="btn-group-toggle">
+											<label class="btn btn-sm btn-info active">
+												<a href="/admin/companies/{{company.id}}">Guardar</a>
+											</label>
+										</div>
+									</td>
+								</tr>
+								{% endfor%}
+							{% endif %}
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-4">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

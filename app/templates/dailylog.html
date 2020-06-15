@@ -1,0 +1,181 @@
+<!-- index.html-->
+{% extends "base.html" %}
+
+{% block content %}
+
+{% from "includes/_formhelpers.html" import render_field %}
+<div class="jumbotron">
+    <h1 class="text-center">Historia Bitácoras </h1>
+    <div class="rigth">
+        <h2>User : {{username}}</h2>
+        <span><a href="{{ url_for('auth_bp.logout') }}">Logout</a></span>   
+    </div>
+</div>
+
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="alert alert-info mt-4" role="alert">
+                                <h4 class="alert-heading">Daily Contact</h4>
+                                <p class="text-justify">
+                                    Como una medida de control y prevencion para la propagacion del <strong>COVID-19</strong>, el <strong>Ministerio de Salud</strong> ha definido en la <strong>Resolucion 0666 de 2020</strong> que todos las personas deben llevar a cabo un registro diario de su estado de salud, de las actividades de cuidado que ha realizado y de la interaccion con otras personas.
+                                </p>
+                                <hr>
+                                <p class="mb-3">
+                                    Asi mismo, si usted o alguien de su nucleo familiar presenta sintomas relacionados con <strong>COVID-19</strong> te invitamos a comunicarte vía telefónica con las siguientes lineas de atencion.
+                                </p>
+                                <p>
+                                    <strong>Cali:</strong> 486 55 55 Opción 7 | <strong>Celular:</strong> 192 | <strong>Resto del país:</strong> 018000955590
+                                </p>
+                              </div>
+                            <form action="{{url_for('dailylog.newlog')}}" method="POST">
+                                {{ form.hidden_tag() }}
+                                <!-- User autocuidado -->
+                                <div class="card mt-3">
+                                    <div class="card-header bg-info">
+                                    <h5>Protocolo de Auto-Cuidado</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            {% for rutina in rutinas %}
+
+                                                {% if rutina.active %}
+                                                    {{ rutina.routine }}
+                                                    {% if rutina.id == 1 %}
+                                                    <select class="form-control" name="rutinas[]" value="{{rutina.id}}" required>
+                                                        <option value=""></option>
+                                                        <option value="Ninguna">Ninguna</option>
+                                                        <option value="1 vez">1 vez</option>
+                                                        <option value="2 veces">2 veces</option>
+                                                        <option value="3 veces">3 veces</option>
+                                                        <option value="4 veces">4 veces</option>
+                                                        <option value="5 veces">5 veces</option>
+                                                        <option value="6 o mas veces">6 o mas veces</option>
+                                                    </select>
+                                                    {% endif%}
+                                                    {% if rutina.id == 2 %}
+                                                    <select class="form-control" name="rutinas[]" value="{{rutina.id}}" required>
+                                                        <option value=""></option>
+                                                        <option value="Ninguno">Ninguno</option>
+                                                        <option value="1 vaso">1 vaso</option>
+                                                        <option value="2 vasos">2 vasos</option>
+                                                        <option value="3 vasos">3 vasos</option>
+                                                        <option value="4 vasos">4 vasos</option>
+                                                        <option value="5 vasos">5 vasos</option>
+                                                        <option value="6 o mas vasos">6 o mas vasos</option>
+                                                    </select>
+                                                    {% endif%}
+                                                    {% if rutina.id == 3 %}
+                                                    <select class="form-control" name="rutinas[]" value="{{rutina.id}}" required>
+                                                        <option value=""></option>
+                                                        <option value="No realice">No realice</option>
+                                                        <option value="1-30 Minutos">1 - 30 Minutos</option>
+                                                        <option value="31-60 Minutos">31 - 60 Minutos</option>
+                                                        <option value="61-90 Minutos">61 - 90 Minutos</option>
+                                                        <option value="Mas de 90 Minutos">Mas de 90 Minutos</option>
+                                                    </select>
+                                                    {% endif%}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End autocuidado -->
+                                <div class="row">
+                                    <div class="col">
+                                        {{ render_field(form.temp_ini, type="number", class_="form-control", step="0.1", min="36.5", max="50", placeholder="36.5") }}
+                                    </div>
+                                    <div class="col">
+                                        {{ render_field(form.temp_final, type="number", class_="form-control", step="0.1", min="36.5", max="50", placeholder="36.5") }}
+                                    </div>
+                                </div>
+                                <!-- Transport -->
+                                <div class="card mt-3">
+                                    <div class="card-header bg-info">
+                                    <h5>Medio de transporte</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            {{ render_field(form.type_tx) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <span></span>
+                                <!-- Sintomas -->
+                                <div class="card mt-3">
+                                    <div class="card-header bg-info">
+                                        <h5>Sintomas Asociados</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>¿Has presentado alguno de estos síntomas?</p>
+                                        <input class="form-check-input" type="checkbox" id="nosintomas" name="nosintomas" value="ninguno"> <br>
+                                        <label class="form-check-label" for="nosintomas">
+                                            <strong>Ninguno</strong>
+                                        </label>
+                                        {% for sintoma in sintomas %}
+                                            {% if sintoma.active %}
+                                            <input type="checkbox" name="sintoma" value="{{sintoma.id}}"> {{sintoma.symptom}} <br>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- interaccion -->
+                                <div class="card mt-3">
+                                    <div class="card-header bg-info">
+                                    <h5>Interaccion con personas</h5>
+                                    </div>
+                                    <div class="card-body">
+                                    <p>Ingresa el nombre de aquellas personas con quien interactuaste por mas de 15 minutos y a una distancia menor a 2 metros.</p>
+                                    <div class="container form-group" id="persons">
+                                        <div class="row col-sm-10">
+                                            <input type="text" class="form-control" name="persona[]" placeholder="Ingrese el nombre" required>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success" id="add_person">Add Persona</button>
+                                    </div>
+                                </div>
+                                <!-- End interaccion -->
+                                <!-- Lugares visitados -->
+                                <div class="card mt-3">
+                                    <div class="card-header bg-info">
+                                    <h5>Lugares visitados</h5>
+                                    </div>
+                                    <div class="card-body">
+                                    <p>Ingresa el nombre de lugares que visitaste y tuviste permanencia de mas de 15 minutos.</p>
+                                    <div class="container form-group" id="lugares">
+                                        <div class="row col-sm-10">
+                                            <input type="text" class="form-control" name="lugares[]" placeholder="Ingrese el lugar visitado" required>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success" id="add_lugar">Add Lugar</button>
+                                    </div>
+                                </div>
+                                <!-- End lugares visitados -->
+                                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Enviar"/>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="{{ url_for("static", filename="dist/js/app.js") }}"></script>
+<script>
+    $(document).ready(function () {
+      $('#nosintomas').on('click', function () {
+        if ($(this).prop("checked") == true) {
+          $("input.sintoma").attr("disabled", true);
+        } else {
+            $("input.sintoma").removeAttr("disabled");
+        }
+      });
+    });
+  </script>
+{% endblock %}
