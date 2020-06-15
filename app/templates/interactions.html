@@ -42,7 +42,11 @@
                                             {{ interaction.name }}
                                         </td>
                                         <td>
-                                            {{ interaction.tipe }}
+                                            {% if interaction.tipe == 'P' %}
+                                                Persona
+                                            {% else %}
+                                                Lugar
+                                            {% endif%}
                                         </td>
                                     </tr>
                                     {% endfor %}
