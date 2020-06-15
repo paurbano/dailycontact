@@ -1,8 +1,10 @@
 # DailyLog form
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, ValidationError, SelectMultipleField, DecimalField, SelectField
+from wtforms import StringField, SubmitField, ValidationError
+from wtforms import SelectMultipleField, DecimalField, SelectField
 from wtforms.validators import DataRequired
 from wtforms.widgets import html_params
+
 
 def select_multi_checkbox(field, ul_class='', **kwargs):
         kwargs.setdefault('type', 'checkbox')
@@ -18,14 +20,19 @@ def select_multi_checkbox(field, ul_class='', **kwargs):
         html.append(u'</ul>')
         return u''.join(html)
 
+
 class DailyLogForm(FlaskForm):
-    ''' 
+    '''
         Add DailyLog Form
     '''
 
-    temp_ini = DecimalField('Temperatura Inicial', places=1, rounding=None, validators=[DataRequired()])
-    temp_final = DecimalField('Temperatura Final', places=1, rounding=None, validators=[DataRequired()])
+    temp_ini = DecimalField('Temperatura Inicial', places=1, rounding=None,
+                            validators=[DataRequired()])
+    temp_final = DecimalField('Temperatura Final', places=1, rounding=None,
+                              validators=[DataRequired()])
     type_tx = SelectField('¿Que medio de transporte utilizaste hoy?',
-                          choices=[('Ninguno','Ninguno'), ('Público','Público'), ('Particular','Particular')],
+                          choices=[('Ninguno', 'Ninguno'),
+                                   ('Público', 'Público'),
+                                   ('Particular', 'Particular')],
                           validators=[DataRequired()])
     sintomas = SelectMultipleField('Sintomas', widget=select_multi_checkbox)
