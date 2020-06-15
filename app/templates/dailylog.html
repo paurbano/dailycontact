@@ -1,0 +1,61 @@
+<!-- index.html-->
+{% extends "base.html" %}
+
+{% block content %}
+
+{% from "includes/_formhelpers.html" import render_field %}
+<div class="jumbotron">
+    <h1 class="text-center">Historia Bitácoras </h1>
+    <div class="rigth">
+        <h2>User : {{username}}</h2>
+        <span><a href="{{ url_for('auth_bp.logout') }}">Logout</a></span>   
+    </div>
+</div>
+
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 style="text-align: center;">Bitacora </h3>
+                            <form action="{{url_for('dailylog.newlog')}}" method="POST">
+                                {{ form.hidden_tag() }}
+                                <div class="row">
+                                    <div class="col">
+                                        {{ render_field(form.temp_ini, type="number", class_="form-control", step="0.1", min="30", max="50", placeholder="30.1") }}
+                                    </div>
+                                    <div class="col">
+                                        {{ render_field(form.temp_final, type="number", class_="form-control", step="0.1", min="30", max="50", placeholder="30.1") }}
+                                    </div>
+                                </div>
+                                {{ render_field(form.type_tx) }}
+                                <span></span>
+                                <div>
+                                    <h3 style="text-align: center;">Síntomas</h3>
+                                    {% for sintoma in sintomas %}
+                                        {{% if sintoma.active %}}
+                                        <input type="checkbox" name="sintoma" value="{{sintoma.id}}"> {{sintoma.symptom}} <br>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div>
+                                    <div class="container form-group" id="persons">
+                                        <div class="row col-sm-10">
+                                            <input type="text" class="form-control" name="person[]" placeholder="Ingrese el nombre" required>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success" id="add_person">Add Persona</button>
+                                </div>
+                                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Enviar"/>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
