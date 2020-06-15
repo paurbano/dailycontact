@@ -24,6 +24,6 @@ class CompanyForm(FlaskForm):
     Add Company form
     '''
     name = StringField('Nombre', validators=[DataRequired()])
-    nit = StringField('Nit', validators=[DataRequired(), Length(min=12, max=15, message='Nit entre 12 y 15')])
+    nit = StringField('Nit', validators=[DataRequired(),Length(min=12, max=15, message='Nit entre 12 y 15')])
     email_contact = StringField('Email Contacto', validators=[DataRequired(), email(message='Enter a valid email')])
     submit = SubmitField('Guardar')
