@@ -1,0 +1,41 @@
+<!-- index.html-->
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Admin Dashboard</h1>
+<div class="login-signup">
+    <span><a href="{{ url_for('dailylog.userlogshistory') }}">Home</a></span>
+    <span><a href="{{ url_for('auth_bp.logout') }}">Logout</a></span>
+</div>
+
+{% block body %}
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="intro-message">
+                <a href="{{ url_for('admin_bp.list_companies') }}" class="btn btn-default btn-lg">
+                  <i class="fa fa-plus"></i>
+                  Companies
+                </a>
+              </div>
+                <div class="intro-message">
+                  <a href="{{ url_for('admin_bp.list_routines') }}" class="btn btn-default btn-lg">
+                    <i class="fa fa-plus"></i>
+                    Routines
+                  </a>
+                </div>
+                <div class="intro-message">
+                  <a href="{{ url_for('admin_bp.list_symptoms') }}" class="btn btn-default btn-lg">
+                    <i class="fa fa-plus"></i>
+                    Symptons
+                  </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% endblock %}
