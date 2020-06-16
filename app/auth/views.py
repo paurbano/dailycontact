@@ -51,7 +51,8 @@ def signup():
             except Exception as err:
                 flash(err)
             # redirect to daily-Log, uncomment when is ready!
-            return redirect(url_for('dailylog.userlogshistory'))
+            # return redirect(url_for('dailylog.userlogshistory'))
+            return render_template('servicios.html', username=new_user.username)
             # return render_template('dummy.html')
 
     return render_template('signup_2.html', form=signup_form,
@@ -73,7 +74,8 @@ def login():
         if current_user.admin:
             return redirect(url_for('admin_bp.dashboard'))
         else:
-            return redirect(url_for('dailylog.userlogshistory'))
+            # return redirect(url_for('dailylog.userlogshistory'))
+            return render_template('servicios.html', username=current_user.username)
         #return render_template('dummy.html')
     
     login_form = LoginForm()
@@ -87,8 +89,8 @@ def login():
                 return redirect(url_for('admin_bp.dashboard'))
             else:
                 # redirect to DailyLog log page
-                return redirect(url_for('dailylog.userlogshistory'))
-                #return render_template('dummy.html')
+                #return redirect(url_for('dailylog.userlogshistory'))
+                return render_template('servicios.html', username=user.username)
         else:
             flash('Invalid Username or Password')
     return render_template('login.html', login_form=login_form, title='Login')
@@ -178,7 +180,8 @@ def callback():
 
     # Send user to DailyLog
     # redirect to DailyLog log page
-    return redirect(url_for('dailylog.userlogshistory'))
+    # return redirect(url_for('dailylog.userlogshistory'))
+    return render_template('servicios.html', username=users_name)
     #return render_template('dummy.html')
 
 @auth_bp.route('/logout')
