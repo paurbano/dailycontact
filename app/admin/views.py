@@ -19,7 +19,7 @@ def dashboard():
         Index admin
     '''
     if current_user.admin:
-        return render_template('dashboard.html')
+        return render_template('dashboard.html', username=current_user.username)
 
     return redirect(url_for('dailylog.userlogshistory'))
 
@@ -43,7 +43,7 @@ def addroutine():
             
             return redirect(url_for('admin_bp.list_routines'))
 
-        return render_template('/routine.html', form=add_form, add_routine=False)
+        return render_template('/routine.html', form=add_form, add_routine=False, username=current_user.username)
 
     return redirect(url_for('auth_bp.login'))
 
@@ -71,7 +71,7 @@ def updateroutine(id=None):
                 db.session.commit()
             except Exception as e:
                 flash('Error actualizando Rutina {}'.format(e))
-        return render_template('routine.html', form=form, routines=routines)
+        return render_template('routine.html', form=form, routines=routines, username=current_user.username)
     return redirect(url_for('auth_bp.login'))
 
 
@@ -109,7 +109,7 @@ def addsymptom():
             
             return redirect(url_for('admin_bp.list_symptoms'))
 
-        return render_template('/symptom.html', form=add_form)
+        return render_template('/symptom.html', form=add_form, username=current_user.username)
 
     return redirect(url_for('auth_bp.login'))
 
@@ -122,7 +122,7 @@ def list_symptoms():
     if current_user.admin:
         symptoms = Symptom.query.all()
         form = SymptomForm()
-        return render_template('symptom.html', form=form, symptoms=symptoms)
+        return render_template('symptom.html', form=form, symptoms=symptoms, username=current_user.username)
     return redirect(url_for('auth_bp.login'))
 
 @admin_bp.route('/symptoms/<int:id>', strict_slashes=True)
@@ -149,7 +149,7 @@ def updatesymptom(id=None):
                 db.session.commit()
             except Exception as e:
                 flash('Error actualizando Sintoma: {}'.format(e))
-        return render_template('symptom.html', form=form, symptoms=symptoms)
+        return render_template('symptom.html', form=form, symptoms=symptoms, username=current_user.username)
     return redirect(url_for('auth_bp.login'))
 
 @admin_bp.route('/companies/add', strict_slashes=True, methods=['GET','POST'])
@@ -174,7 +174,7 @@ def addcompany():
                     flash('Can´t added company {}'.format(e))
                 
                 return redirect(url_for('admin_bp.list_companies'))
-        return render_template('/company.html', form=form)
+        return render_template('/company.html', form=form, username=current_user.username)
     return redirect(url_for('auth_bp.login'))
 
 @admin_bp.route('/companies', strict_slashes=True, methods=['GET', 'POST'])
@@ -186,7 +186,7 @@ def list_companies():
     if current_user.admin:
         companies = Company.query.all()
         form = CompanyForm()
-        return render_template('company.html', form=form, companies=companies)
+        return render_template('company.html', form=form, companies=companies, username=current_user.username)
     return redirect(url_for('auth_bp.login'))
 
 @admin_bp.route('/companies/<int:id>', strict_slashes=True)
@@ -213,7 +213,7 @@ def updatecompanies(id=None):
                 db.session.commit()
             except Exception as e:
                 flash('Error actualizando Empresa: {}'.format(e))
-        return render_template('company.html', form=form, companies=companies)
+        return render_template('company.html', form=form, companies=companies, username=current_user.username)
     return redirect(url_for('auth_bp.login'))
 
 @login_manager.unauthorized_handler
