@@ -112,9 +112,9 @@
                                     </div>
                                     <div class="card-body">
                                         <p>¿Has presentado alguno de estos síntomas?</p>
-                                        <input class="form-check-input" type="checkbox" id="nosintomas" name="nosintomas" value="ninguno"> <br>
+                                        <input class="form-check-input" type="checkbox" id="nosintomas" name="nosintomas" value="ninguno">
                                         <label class="form-check-label" for="nosintomas">
-                                            <strong>Ninguno</strong>
+                                            <strong>Ninguno</strong> <br>
                                         </label>
                                         {% for sintoma in sintomas %}
                                             {% if sintoma.active %}

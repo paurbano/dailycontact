@@ -1,5 +1,5 @@
 {% import "bootstrap/wtf.html" as wtf %}
-{% extends "base.html" %}
+{% extends "dashboard.html" %}
 {% block title %}
     
 {% endblock %}
@@ -33,26 +33,25 @@
 			</div>
 			<div class="row">
 				<div class="col-md-4">
+					<form action="{{url_for('admin_bp.addsymptom')}}" method="POST">
+						<div class="form-group">
+							{{ form.hidden_tag() }}
+							{{ render_field(form.symptom, class_="form-control", placeholder="Sintoma") }}
+						</div>
+						<!--
+						<div class="form-group">
+							{{ render_field(form.active, class_="form-control") }}
+						</div>
+						-->
+						<p class="text-right">
+							<input type="submit" class="btn btn-lg btn-primary btn-block" value="Guardar"/>
+						</p>
+					  </form>
 				</div>
 				<div class="col-md-4">
           <!-- 
           {{ wtf.quick_form(form) }}
-          -->
-          <form action="{{url_for('admin_bp.addsymptom')}}" method="POST">
-            <div class="form-group">
-                {{ form.hidden_tag() }}
-                {{ render_field(form.symptom, class_="form-control", placeholder="Sintoma") }}
-            </div>
-            <!--
-            <div class="form-group">
-                {{ render_field(form.active, class_="form-control") }}
-            </div>
-			-->
-            <p class="text-right">
-                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Guardar"/>
-            </p>
-          </form>
-          <br>
+		  -->
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -97,8 +96,6 @@
               				{% endif %}
 						</tbody>
 					</table>
-				</div>
-				<div class="col-md-4">
 				</div>
 			</div>
 		</div>
