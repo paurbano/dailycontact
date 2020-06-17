@@ -98,8 +98,7 @@ def addsymptom():
         add_form = SymptomForm()
 
         if add_form.validate_on_submit():
-            new_symptom = Symptom(symptom=add_form.symptom.data,
-                                  active=add_form.active.data)
+            new_symptom = Symptom(symptom=add_form.symptom.data)
             try:
                 db.session.add(new_symptom)
                 db.session.commit()

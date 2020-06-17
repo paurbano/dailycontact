@@ -1,6 +1,6 @@
 # Login and SignUp forms
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, SubmitField, ValidationError
+from wtforms import PasswordField, StringField, SubmitField, ValidationError, SelectField
 from wtforms.validators import DataRequired, email, EqualTo, Length
 
 '''
@@ -21,17 +21,19 @@ class SignUpForm(FlaskForm):
     '''
     Users signup form
     '''
-    username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), email(message='Enter a valid email')])
-    password= PasswordField('Password', validators=[DataRequired(),
-                                                    Length(min=6, message='password must be 6 characters minimun')])
-    confirm = PasswordField('Confirm Your Password',
+    company = SelectField('Empresa', choices=[('Independiente','Independiente'),('Holberton School','Holberton School'),('Zonamerica','zonamerica')], validators=[DataRequired()])
+    username = StringField('Usuario', validators=[DataRequired()])
+    email = StringField('Correo Electronico', validators=[DataRequired(), email(message='Ingreso un correo valido')])
+    password= PasswordField('Contrasena', validators=[DataRequired(),
+                                                    Length(min=6, message='Contrasena debe tener 6 caracteres minimo')])
+    confirm = PasswordField('Confirme su contrasena',
                             validators=[DataRequired(),
-                                        EqualTo('password', message='Password do not match.')])
-    submit = SubmitField('Sign Up')
+                                        EqualTo('password', message='contrasena no coincide')])
+    submit = SubmitField('Registrame')
 
 class LoginForm(FlaskForm):
     ''' user login form '''
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
+    username = StringField('Usuario', validators=[DataRequired()])
+    password = PasswordField('Contrasena', validators=[DataRequired()])
+    submit =   SubmitField('Entrar')
+    

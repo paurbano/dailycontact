@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="../static/assets_Signup/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sanchez">
+    <link rel="stylesheet" href="../static/assets_Signup/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="../static/assets_Signup/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="../static/assets_Signup/smoothproducts.css">
+</head>
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto"></ul>
+            </div>
+        </div>
+    </nav>
+    <section class="clean-block clean-form dark" style="background-color: rgba(49,82,91,0.96);">
+        <div class="container">
+            <div class="block-heading">
+                <h2 style="color: rgb(255,255,255);font-family: Sanchez, serif;"><img src="../static/assets_Signup/img/network%20(2).png" style="width: 103px;height: 100px;">&nbsp;<strong>Crear </strong>una cuenta</h2>
+                <p style="color: rgb(255,255,255);">Recuerda seleccionar tu empresa, de lo contrario tu registro se hara como independiente.</p>
+            </div>
+            {{ wtf.quick_form(form) }}
+            <form method="POST" action="/signup">
+                <div class="form-group"><label for="name" style="font-family: Sanchez, serif;">Empresa</label><select class="form-control" style="font-family: Sanchez, serif;"><optgroup label="Empresas"><option value="12" selected="">Independiente</option><option value="13">Holberton School</option><option value="14">Zonamerica</option></optgroup></select></div>
+                <div class="form-group"><label for="name" style="font-family: Sanchez, serif;">Usuario</label><input class="form-control item" type="text" id="name">
+                    
+                    </div>
+                    <div class="form-group"><label for="email" style="font-family: Sanchez, serif;">Correo Electronico</label><input class="form-control item" type="email" id="email">
+                        
+                    </div>
+                    <div class="form-group"><label for="password" style="font-family: Sanchez, serif;">Contrasena</label><input class="form-control item" type="password" id="password">
+                        
+                    </div>
+                    <div class="form-group"><label for="password" style="font-family: Sanchez, serif;">Repetir contrasena</label><input class="form-control item" type="password" id="password">
+                       
+                    </div>
+                    <hr style="margin: 20px;"><button class="btn btn-primary btn-block" type="submit" style="background-color: #ffa101;font-family: Sanchez, serif;">Registrame
+                  
+                    </button>
+                    <div style="width: 380px;margin: 0px 50px;"><a href="{{ url_for('auth_bp.login') }}" style="margin: 0px 80px 0px;font-size: 14px;font-family: Sanchez, serif;">Ya tiene una cuenta? Login</a></div>
+                    <hr><a class="btn btn-primary btn-block" role="button" href="/oauth" style="background-color: #31525b;font-family: Sanchez, serif;"><i class="fab fa-google"></i>&nbsp;Entrar con mi cuenta Google</a>
+           </form>
+        </div>
+    </section>
+    <script src="../static/assets_Signup/js/jquery.min.js"></script>
+    <script src="../static/assets_Signup/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="../static/assets_Signup/js/smoothproducts.min.js"></script>
+    <script src="../static/assets_Signup/js/theme.js"></script>
+</body>
+{% endblock %}
+</html>
+
+
+
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+
+      </div>
+      <div class="col">
+        <img class="mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Crear Cuenta ESTE ES EL FORM</h1>
+        {{ wtf.quick_form(form) }}
+        <p class="text-center">o</p>
+        <form action="/oauth" method="POST">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Continuar con Google</button>
+        </form>
+      </div>
+      <div class="col">
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+submit = SubmitField('Registrame')
+
+{{ form.submit(class="btn btn-primary btn-block",style="background-color: #ffa101;font-family: Sanchez, serif;") }}
+
+
+
+

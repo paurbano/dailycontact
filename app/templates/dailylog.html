@@ -4,13 +4,7 @@
 {% block content %}
 
 {% from "includes/_formhelpers.html" import render_field %}
-<div class="jumbotron">
-    <h1 class="text-center">Historia Bitácoras </h1>
-    <div class="rigth">
-        <h2>User : {{username}}</h2>
-        <span><a href="{{ url_for('auth_bp.logout') }}">Logout</a></span>   
-    </div>
-</div>
+
 
 <div class="container">
     <div class="container">
@@ -112,10 +106,7 @@
                                     </div>
                                     <div class="card-body">
                                         <p>¿Has presentado alguno de estos síntomas?</p>
-                                        <input class="form-check-input" type="checkbox" id="nosintomas" name="nosintomas" value="ninguno">
-                                        <label class="form-check-label" for="nosintomas">
-                                            <strong>Ninguno</strong> <br>
-                                        </label>
+                                        
                                         {% for sintoma in sintomas %}
                                             {% if sintoma.active %}
                                             <input type="checkbox" name="sintoma" value="{{sintoma.id}}"> {{sintoma.symptom}} <br>
@@ -155,7 +146,7 @@
                                     </div>
                                 </div>
                                 <!-- End lugares visitados -->
-                                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Enviar"/>
+                                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Enviar" style="background-color: #31525B;"/>
 
                             </form>
                         </div>

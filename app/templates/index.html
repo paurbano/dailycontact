@@ -1,12 +1,142 @@
-<!-- index.html-->
-{% extends "base.html" %}
+<!DOCTYPE html>
 
-{% block content %}
+<html>
+  
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{title}}</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="../static/assets_Landing/img/network%20(2).png">
+    <link rel="stylesheet" href="../static/assets_Landing/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sanchez">
+</head>
 
-<h1>Welcome to Daily Contact!</h1>
-<div class="login-signup">
-    <span><a href="{{ url_for('auth_bp.signup') }}">Sign UP</a></span>
-    <span><a href="{{ url_for('auth_bp.login') }}">Log in.</a></span>
-  </div>
+<body>
+  {% block content %}
+    <nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
+        <div class="container"><img src="../static/assets_Landing/img/network%20(2).png" style="width: 50px;height: 50px;"><a class="navbar-brand" href="#" style="font-family: Sanchez, serif;color: #31525b;font-size: 30px;"><strong>Daily Contact</strong></a><button data-toggle="collapse" class="navbar-toggler"
+                data-target="#navcol-1"></button>
+            <div class="collapse navbar-collapse" id="navcol-1"><a class="btn btn-primary ml-auto" role="button" href="{{ url_for('auth_bp.login') }}" style="background-color: #31525b;">Log In</a></div>
+        </div>
+    </nav>
+    <header class="masthead text-white text-center" style="background: url('bg-masthead.jpg')no-repeat center center;background-size: cover;background-image: url(&quot;../static/assets_Landing/img/dialy_Contact_Back.png&quot;);height: 450px;padding: 50px;">
+        <div class="overlay" style="height: 450px;"></div>
+        <div class="overlay" style="height: 450px;background-color: #212529;"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 style="font-size: 60px;opacity: 1;">Tu bitacora de chequeo covid-19</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p></p>
+                    <p style="font-size: 24px;">Registra tu estado de salud e interacciones en <strong>Daily Contact </strong>y haz seguimiento de tu exposicion al virus.&nbsp;NO se requiere tu localizacion o contactos.<br></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p style="height: 0px;font-size: 20px;"></p><a class="btn btn-light text-white border rounded" role="button" style="opacity: 1;filter: blur(0px);background-color: #ffa101;width: 160px;height: 50px;font-size: 25px;" href="{{ url_for('auth_bp.signup') }}">Inscribirme</a></div>
+            </div>
+            {% endblock %}
+        </div>
+    </header>
+    <section class="features-icons bg-light text-center" style="padding: 10px 10px 80px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                        <div class="d-flex features-icons-icon" style="padding: 10px 100px;"><img src="../static/assets_Landing/img/temperature%20(1).png" style="width: 100px;height: 100px;"></div>
+                        <h3 style="color: #31525b;font-family: Sanchez, serif;">Bitacora</h3>
+                        <p class="lead mb-0">Agrega tus rutinas, estado de salud, personas y lugares visitados.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                        <div class="d-flex features-icons-icon" style="padding: 10px 100px;"><img src="../static/assets_Landing/img/history.png" style="width: 100px;height: 100px;"></div>
+                        <h3 style="color: #31525b;font-family: Sanchez, serif;">Bioseguridad</h3>
+                        <p class="lead mb-0">&nbsp;Accede a las interacciones de los ultimos 14 dias.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
+                        <div class="d-flex features-icons-icon" style="padding: 10px 100px;"><img src="../static/assets_Landing/img/graph-report.png" style="width: 100px;height: 100px;"></div>
+                        <h3 style="color: #31525b;font-family: Sanchez, serif;">Trayectoria</h3>
+                        <p class="lead mb-0">Descubre tu cadena de exposicion al virus.&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="showcase" style="background-color: rgba(49,82,91,0.84);">
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                <div class="col-lg-6 my-auto order-lg-1 showcase-text">
+                    <h2 style="color: #ffa101;font-family: Sanchez, serif;">Cadena de exposicion al virus</h2>
+                    <p class="lead mb-0" style="color: rgb(255,255,255);">En caso de novedad, verifica la trayectoria de exposicion al virus de tus empleados.</p>
+                </div>
+                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url(&quot;../static/assets_Landing/img/pathB.png&quot;);"><span></span></div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-lg-6 text-white showcase-img" style="background-image: url(&quot;../static/assets_Landing/img/molde.png&quot;);"><span></span></div>
+                <div class="col-lg-6 my-auto order-lg-1 showcase-text">
+                    <h2 style="color: #ffa101;font-family: Sanchez, serif;">Ajustable a tus necesidades</h2>
+                    <p class="lead mb-0" style="color: rgb(255,255,255);">Si tu empresa utiliza protocolos especiales, Daily Contact se moldea a tus necesidades.</p>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url(&quot;../static/assets_Landing/img/bg-showcase-2.jpg&quot;);"><span></span></div>
+                <div class="col-lg-6 my-auto order-lg-1 showcase-text">
+                    <h2 style="color: #ffa101;font-family: Sanchez, serif;">Actualizaciones&nbsp;</h2>
+                    <p class="lead mb-0" style="color: rgb(255,255,255);">Daily Contact, se actualiza constantemente de acuerdo a las disposiciones del gorbierno colombiano.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr style="height: 10px;margin: 40px 0px 0px;">
+    <section class="testimonials text-center bg-light" style="padding: 30px 0px;">
+        <div class="container border-warning">
+            <h2 class="mb-5" style="color: #31525b;font-family: Sanchez, serif;">Nuestro Equipo</h2>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="../static/assets_Landing/img/palomalo.jpg">
+                        <h5 style="font-family: Sanchez, serif;">PabloUrbano.</h5>
+                        <p class="font-weight-light mb-0">CEO - Lider de Desarrollo</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="../static/assets_Landing/img/aiko.jpg">
+                        <h5 style="font-family: Sanchez, serif;">Aiko Mi.</h5>
+                        <p class="font-weight-light mb-0">Desarrollladora Front-End</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="../static/assets_Landing/img/jackson.jpg">
+                        <h5 style="font-family: Sanchez, serif;">Jackson Moreno.</h5>
+                        <p class="font-weight-light mb-0">I+D - Desarrollador Back-End&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 my-auto h-100 text-center text-lg-left">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item"><a href="https://github.com/paurbano/dailycontact/blob/master/Terms">Terms of &nbsp;Use</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="https://github.com/paurbano/dailycontact/blob/master/Data%20Policy">Privacy Policy</a><span style="margin: 0px 8px;">⋅</span><a href="#">1283@holbertonschool.com</a></li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">ZA-Cali-Colombia © Jaiblo 2020. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../static/assets_Landing/js/jquery.min.js"></script>
+    <script src="../static/assets_Landing/bootstrap/js/bootstrap.min.js"></script>
+  
+</body>
 
-{% endblock %}
+</html>

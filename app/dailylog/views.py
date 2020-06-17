@@ -36,7 +36,7 @@ def newlog():
         form = DailyLogForm()
         sintomas = Symptom.query.filter_by(active=1)
         rutinas = Routine.query.filter_by(active=1)
-        # print(rutinas)
+        print(sintomas)
         if request.method == 'POST':  # form.validate_on_submit()
             user = User.query.get(current_user.id)
             list_rutinas = request.form.getlist('rutinas[]')
@@ -84,10 +84,10 @@ def newlog():
             except Exception as e:
                 flash('Error guardando bitacora {}'.format(e))
             return render_template('dailylog.html', form=form,
-                                   sintomas=sintomas, rutinas=rutinas)
+                                   sintomas=sintomas, rutinas=rutinas, username=current_user.username)
 
         return render_template('dailylog.html', form=form,
-                               sintomas=sintomas, rutinas=rutinas)
+                               sintomas=sintomas, rutinas=rutinas, username=current_user.username)
 
         # return render_template('dummy.html')
 
@@ -101,7 +101,7 @@ def interactions(uid=None):
         userlogs = User.query.get(current_user.id)
     else:
         userlogs = User.query.get(uid)
-    return render_template('interactions.html', userlogs=userlogs)
+    return render_template('interactions.html', userlogs=userlogs, username=current_user.username)
 
 
 @login_manager.unauthorized_handler

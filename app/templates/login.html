@@ -1,48 +1,40 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
 
-{% block content %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{title}}</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="../static/assetsLogin/img/network%20(2).png">
+    <link rel="stylesheet" href="../static/assetsLogin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sanchez">
+    <link rel="stylesheet" href="../static/assetsLogin/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../static/assetsLogin/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="../static/assetsLogin/css/styles.css">
+</head>
 
-{% from "includes/_formhelpers.html" import render_field %}
+<body>
+    {% block content %}
 
-<div class="jumbotron">
-    <h1 class="text-center">Daily Contact</h1>
-</div>
-
-<div class="container">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-
-            </div>
-
-            <div class="col">
-                <div class="container">
-                    <form action="/login" method="POST">
-                        <div class="form-group">
-                            {{ login_form.hidden_tag() }}
-                            {{ render_field(login_form.username, class_="form-control", placeholder="Username") }}
-                        </div>
-                                                    
-                        <div class="form-group">
-                            {{ render_field(login_form.password, class_="form-control", placeholder="password") }}
-                        </div>
-
-                        <p class="text-right">
-                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit"/>
-                        </p>
-                    </form>
-                    <p>o</p>
-                    <form action="/oauth" method="POST">
-                        <button type="submit" class="btn btn-lg btn-primary btn-block">Access with Google account</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="col">
-
-            </div>
-        </div>
+    {% from "includes/_formhelpers.html" import render_field %}
+    <div class="login-clean" style="background-color: rgba(49,82,91,0.96);height: 700px;">
+        <form method="post" style="padding: 40px;background-color: #ffffff;" action="/login">
+            <div class="illustration"><img class="img-fluid" src="../static/assetsLogin/img/network%20(2).png" width="100" height="100"></div>
+            <div class="form-group"  style="font-family: Lato, sans-serif;">{{ login_form.hidden_tag() }}
+                {{ render_field(login_form.username, class_="form-control") }}</div>
+            <div class="form-group" style="font-family: Lato, sans-serif;">{{ render_field(login_form.password, class_="form-control") }}</div>
+            <div class="form-group" style="margin: 0px;"><button class="btn btn-primary btn-block shadow-lg" type="submit" style="background-color: rgba(255,161,1,0.71);font-size: 16px;padding: 5px;font-family: Sanchez, serif;margin: 35px 0px 0px;">Entrar</button></div>
+            <hr style="height: 3px;">
+            <div class="form-group"><a class="btn btn-primary btn-block shadow-lg" role="button" href="{{ url_for('auth_bp.oauth_login') }}" style="background-color: rgba(49,82,91,0.99);font-size: 16px;padding: 5px;font-family: Sanchez, serif;margin: 0px 0px;"><i class="fab fa-google"></i>&nbsp;Usar mi cuenta Google</a></div>
+            <div
+                style="margin: 0px 50px;width: 160px;"><a href="#" style="font-size: 14px;">Olvido su contrasena?</a></div>
+    <div style="margin: 0px 70px;width: 140px;"><a href="{{ url_for('auth_bp.signup') }}" style="font-size: 14px;">Crear una cuenta</a></div>
+    </form>
     </div>
-</div>
+    <script src="../static/assetsLogin/js/jquery.min.js"></script>
+    <script src="../static/assetsLogin/bootstrap/js/bootstrap.min.js"></script>
+    {% endblock %}
+</body>
 
-{% endblock %}
+</html>
