@@ -14,6 +14,13 @@ from app.dailylog.forms import DailyLogForm
 from app import login_manager
 
 
+@dailylog.route('/', strict_slashes=True)
+@login_required
+def index():
+    ''' '''
+    return render_template('servicios.html', username=current_user.username)
+
+
 @dailylog.route('/logshistory/', strict_slashes=True)
 @dailylog.route('/logshistory/<id>', strict_slashes=True)
 @login_required
@@ -36,7 +43,7 @@ def newlog():
         form = DailyLogForm()
         sintomas = Symptom.query.filter_by(active=1)
         rutinas = Routine.query.filter_by(active=1)
-        print(sintomas)
+        # print(sintomas)
         if request.method == 'POST':  # form.validate_on_submit()
             user = User.query.get(current_user.id)
             list_rutinas = request.form.getlist('rutinas[]')

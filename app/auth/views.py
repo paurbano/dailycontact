@@ -81,7 +81,7 @@ def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
         # check if user exist and the password matches with the store it in Database
-        user = User.query.filter_by(username=login_form.username.data).first()
+        user = User.query.filter_by(username=login_form.username.data, oauth_id='').first()
         if user and user.check_password(password=login_form.password.data):
             login_user(user)
             # next_page = request.args.get('next')
