@@ -2,7 +2,7 @@
 <html>
 <title>Daily Contact</title>
 
-<xmp theme="united" style="display:none;">
+<xmp theme="Cerulean" style="display:none;">
 # Markdown text goes in here
 
 ## Chapter 1
