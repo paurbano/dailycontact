@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html>
-<title>Daily Contact</title>
-
-<xmp theme="Cerulean" style="display:none;">
 # Markdown text goes in here
 
 ## Chapter 1
@@ -27,7 +22,3 @@ Para trabajar con el
     $ python3 run.py
 
 ### Authors
-</xmp>
-
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
-</html>
