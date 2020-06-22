@@ -1,7 +1,0 @@
-#!/bin/bash
-export SECRET_KEY='!wdcvfer3$4rfvbgt%5'
-export SQLALCHEMY_DATABASE_URI='mysql+pymysql://covid_dev:covid19_dev@localhost/daily_dev_db'
-export GOOGLE_CLIENT_ID='216501431691-c7g943n0e5ch39k86e4j4o19ci3nh7n9.apps.googleusercontent.com'
-export GOOGLE_CLIENT_SECRET='YI-L1DQOTixOBwv_XQR6yXNe'
-export GOOGLE_DISCOVERY_URL='https://accounts.google.com/.well-known/openid-configuration'
-export FLASK_ENV='production'
