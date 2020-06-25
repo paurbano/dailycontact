@@ -1,8 +1,8 @@
 <h1 align="center">DailyContact</h1>
 
-For those who have to accomplish Covid-19 biosafety protocols, Daily Contact is a tool that allows you to keep logs about symptoms, routines, people and places where you have been interacting the last 14 days. Unlike other Covid-19 apps, we do NOT need your location or contacts, we respect your privacy. You can try it [here]((http://35.185.87.254/))
+For those who have to accomplish Covid-19 biosafety protocols, Daily Contact is a tool that allows you to keep logs about symptoms, routines, people and places where you have been interacting the last 14 days. Unlike other Covid-19 apps, we do NOT need your location or contacts, we respect your privacy. You can try it [here](http://35.185.87.254/)
 
-![](https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/landing.png)
+(https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/landing.png)
 
 ## Features :
 
