@@ -8,7 +8,6 @@ For those who have to accomplish Covid-19 biosafety protocols, Daily Contact is 
   />
 </p>
 
-
 ## Features :
 
 - Register as User
