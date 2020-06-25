@@ -2,7 +2,12 @@
 
 For those who have to accomplish Covid-19 biosafety protocols, Daily Contact is a tool that allows you to keep logs about symptoms, routines, people and places where you have been interacting the last 14 days. Unlike other Covid-19 apps, we do NOT need your location or contacts, we respect your privacy. You can try it [here](http://35.185.87.254/)
 
-(https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/landing.png)
+<p align="center">
+  <img src="https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/landing.png"
+       alt="DailyContact"
+  />
+</p>
+
 
 ## Features :
 
@@ -11,18 +16,28 @@ For those who have to accomplish Covid-19 biosafety protocols, Daily Contact is 
 - Manage and customize companies, routines and symptoms
 
 It´s easy to use, just signup and start!!
+<p align="center">
+  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/signup.PNG"
+       alt="DailyContactLogin"
+  />
+</p>
 
-![](https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/signup.PNG)
-
-
-![](https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/servicios.png)
+<p align="center">
+  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/servicios.png"
+       alt="DailyContactServicios"
+  />
+</p>
 
 ## Project structure and architecture
 
 For these project we use three technologies MySql as Database, Flask-Python for backend and bootstrap for front-end
 
 These is how project is structured
-![](https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/stucture.png)
+<p align="center">
+  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/stucture.png"
+       alt="DailyContactStructure"
+  />
+</p>
 
 - [Admin](https://github.com/paurbano/dailycontact/tree/master/app/admin): Manage content like companies, routines and symptoms 
 - [Auth](https://github.com/paurbano/dailycontact/tree/master/app/auth): All about users login, signup and credentials
@@ -30,8 +45,11 @@ These is how project is structured
 - [Models](https://github.com/paurbano/dailycontact/tree/master/app/models): Classes and data model
 
 The architecture is so simple:
-
-![](https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/architecture.png)
+<p align="center">
+  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/architecture.png"
+       alt="DailyContactStructure"
+  />
+</p>
 
 If you want to try it locally
 
