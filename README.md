@@ -95,6 +95,6 @@ or you can create a bash file and put all this variables.
     $ python3 run.py
 
 ### Authors
-Aiko Mi(https://www.linkedin.com/in/aiko-mi-1293ba1a0/)
-Jackson Moreno(https://www.linkedin.com/in/jaarmore)
-Pablo Andrés Urbano(https://www.linkedin.com/in/pablourbanodelacruz)
+[Aiko Mi](https://www.linkedin.com/in/aiko-mi-1293ba1a0/)
+[Jackson Moreno](https://www.linkedin.com/in/jaarmore)
+[Pablo Andrés Urbano](https://www.linkedin.com/in/pablourbanodelacruz)
