@@ -19,7 +19,7 @@ It´s easy to use, just signup and start!!
 ![](https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/signup.PNG)
 
 <p align="center">
-  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/signup.PNG"
+  <img src="https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/signup.PNG"
        alt="DailyContactLogin"
   />
 </p>
@@ -48,7 +48,7 @@ These is how project is structured
 
 The architecture is so simple:
 <p align="center">
-  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/architecture.png"
+  <img src="https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/architecture.png"
        alt="DailyContactStructure"
   />
 </p>
