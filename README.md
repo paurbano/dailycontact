@@ -23,7 +23,7 @@ It´s easy to use, just signup and start!!
 </p>
 
 <p align="center">
-  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/servicios.png"
+  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/servicios.PNG"
        alt="DailyContactServicios"
   />
 </p>
