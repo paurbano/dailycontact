@@ -15,18 +15,12 @@ For those who have to accomplish Covid-19 biosafety protocols, Daily Contact is 
 - Manage and customize companies, routines and symptoms
 
 It´s easy to use, just signup and start!!
-![](https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/signup.PNG)
-<p align="center">
-  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/signup.PNG"
-       alt="DailyContactLogin"
-  />
-</p>
 
-<p align="center">
-  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/servicios.png"
-       alt="DailyContactServicios"
-  />
-</p>
+![](https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/signup.PNG)
+> DailyContact Login.
+
+![](https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/servicios.png)
+> DailyContact Servicios.
 
 ## Project structure and architecture
 
