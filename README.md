@@ -16,8 +16,6 @@ For those who have to accomplish Covid-19 biosafety protocols, Daily Contact is 
 
 It´s easy to use, just signup and start!!
 
-![](https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/signup.PNG)
-
 <p align="center">
   <img src="https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/signup.PNG"
        alt="DailyContactLogin"
