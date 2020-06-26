@@ -23,7 +23,7 @@ It´s easy to use, just signup and start!!
 </p>
 
 <p align="center">
-  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/servicios.PNG"
+  <img src="https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/servicios.PNG"
        alt="DailyContactServicios"
   />
 </p>
@@ -34,7 +34,7 @@ For these project we use three technologies MySql as Database, Flask-Python for 
 
 These is how project is structured
 <p align="center">
-  <img src="https://github.com/paurbano/dailycontact/tree/master/app/static/dist/img/stucture.png"
+  <img src="https://github.com/paurbano/dailycontact/blob/master/app/static/dist/img/structure.png"
        alt="DailyContactStructure"
   />
 </p>
